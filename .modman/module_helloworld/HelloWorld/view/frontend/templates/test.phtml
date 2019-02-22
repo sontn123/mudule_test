@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $post \Ecommage\HelloWorld\Model\Post
+ */
+//    var_dump($block->getPostData());die;
+//    foreach ($block->getPostData() as $value){
+//        echo $value->getName();
+//        echo $value->getPostContent();
+//    }
+    ?>
+<div>
+    <?php foreach ($block->getPostData() as $value){ ?>
+        <img src="<?php echo $value->getImageUrl().$value->getFeaturedImage(); ?>" style="width: 200px;">
+    <div><?php echo $value->getName(); ?></div>
+    <?php } ?>
+</div>

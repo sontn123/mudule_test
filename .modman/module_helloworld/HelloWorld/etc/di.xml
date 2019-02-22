@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ecommage_helloworld_post_listing_data_source" xsi:type="string">Ecommage\HelloWorld\Model\ResourceModel\Post\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Ecommage\HelloWorld\Model\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">ecommage_helloworld_posts</argument>
+            <argument name="resourceModel" xsi:type="string">Ecommage\HelloWorld\Model\ResourceModel\Post</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Ecommage\HelloWorld\HelloWorldImageUpload" type="Ecommage\HelloWorld\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">helloworld/tmp/post</argument>
+            <argument name="basePath" xsi:type="string">helloworld/post</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Ecommage\HelloWorld\Controller\Adminhtml\Post\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Ecommage\HelloWorld\HelloWorldImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Ecommage\HelloWorld\Controller\Index\Example">
+        <plugin name="Ecommage_HelloWorld_Plugin" type="Ecommage\HelloWorld\Plugin\ExamplePlugin" sortOrder="10" disabled="false"  />
+    </type>
+
+</config>
